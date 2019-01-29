@@ -1,0 +1,299 @@
+# -*- mode: org; fill-column: 79; -*-
+
+#+TITLE: Web Design
+#+AUTHOR: WLHarvey4
+#+DATE: 2019-01-28 Mon 19:40
+#+MACRO: VERSION Version 0.0.1
+
+* Basic Document Structure
+
+  The recommended minimal skeleton of an HTML document.[fn:xhtml]
+
+  #+BEGIN_EXAMPLE
+   <!DOCTYPE html>
+
+   <html lang="en">
+
+     <head>
+       <meta charset="utf-8">
+       <title>Title</title>
+     </head>
+
+     <body>
+     Content
+     </body>
+
+   </html>
+  #+END_EXAMPLE
+
+** !DOCTYPE (Document Type Declaration)
+
+   The first line in the example isn't an element, but rather a /document type
+   declaration/ (also called a /DOCTYPE declaration/ that lets modern browsers
+   know which HTML specification to use to interpret the document.  The
+   document type declaration ~html~ identifies the document as being written
+   in ~HTML5~.
+
+** =html= Root Element
+
+   The entire document is contained with an =html= element, which is called
+   the /root element/ because it contains all the elements in the document,
+   and it may not be contained within any other element.  It is good style to
+   include a =lang= attribute.
+
+** =head= and =body= Elements
+
+   Within the =html= element, the document is divided into a =head= and and
+   =body=.  The =head= element contains elements that pertain to the document
+   that are not rendered as part of the content, such as the
+   - title
+   - style sheets
+   - scripts
+   - metadata
+
+
+** =meta= Elements
+
+   =meta= elements provide document /metadata/, information about the
+   document.  It specifies the /character encoding/ (a standardized collection
+   of letters, numbers, and symbols) used in the document as [[https://unicode.org/][Unicode]] version
+   UTF-8[fn:unicode-utf8].  Other types of metadata provided by the =meta=
+   element are:
+   - author
+   - keywords
+   - publishing status
+   - description that can be used by search engines
+
+
+** =title= Element
+
+   Also in the =head= is the mandatory =title= element.  According to the HTML
+   specification, every document must contain a descriptive title.
+
+** =body= Element
+
+   The =body= element contains everything that should show up in the browser
+   window.
+
+[fn:xhtml]There is a stricter version of HTML called XHTML that requires all
+element and attribute names to appear in lowercase.  It retains certain use
+cases when it is combined with other XML languages.  The preference for all
+lowercase element names persists in HTML, however.
+
+[fn:unicode-utf8]HTML5 uses the UTF-8 encoding by default, which allows
+wide-ranging languages to be mixed within a single document.  It is always a
+good idea to declare the character encoding for a document with the =meta=
+element, as shown.  The server also needs to be configured to identify HTML
+documents as UTF-8 in the HTTP header (information about the document that the
+server sends to the user agent).  Ask your server administrator to confirm the
+encoding of the HTML documents.
+
+* Web Creation Steps
+
+  1. *Start with content.* As a starting point, write up raw text
+     content and see what browsers do with it.
+  2. *Give the HTML document structure.* Learn about HTML element
+     syntax and and the elements that set up areas for content and
+     metadata.
+  3. *Identify contextual elements.* Describe the content using the
+     appropriate text elements and learn about the proper way to use
+     HTML.
+  4. *Add an image.* By adding an image to the page, learn about
+     attributes and empty elements.
+  5. *Change how the text looks with a style sheet.* Get a taste of
+     formatting content with Cascading Style Sheets.
+
+* Content
+
+  A web page is all about content, so that's where to begin.
+
+  Enter the raw text content from [[https://learningwebdesign.com/5e/materials/][Exercise Materials]], name the file
+  ~index.html~, and place it into the ~src~ directory.
+
+  - Default export settings using =<C-c><C-e> default=
+  - Default HTML export settings using =<C-c><C-e> html=
+  - Added =#+EXPORT_FILE_NAME: src/index.html=
+  - Extended title as =#+TITLE: index.html=
+
+  #+ATTR_HTML: :textarea t
+  #+BEGIN_EXAMPLE
+   Black Goose Bistro
+
+   The Restaurant
+   The Black Goose Bistro offers casual lunch and dinner fare in a relaxed
+   atmosphere. The menu changes regularly to highlight the freshest local
+   ingredients.
+
+   Catering
+   You have fun. We'll handle the cooking. Black Goose Catering can handle
+   events from snacks for a meetup to elegant corporate fundraisers.
+
+   Location and Hours
+   Seekonk, Massachusetts;
+   Monday through Thursday 11am to 9pm; Friday and Saturday, 11am to
+   midnight
+  #+END_EXAMPLE
+
+** Content under Org-Mode
+
+   Some default structural formatting is taking place:
+   - a ~header~ element is added;
+   - an ~h1~ element is added around the TITLE, with a class of ~title~;
+   - paragraphs are added around the content
+
+   The above content is rendered using Org-mode HTML Export as:
+
+   #+BEGIN_EXAMPLE
+<body>
+<div id="content">
+<header>
+<h1 class="title">index.html</h1>
+</header><p>
+Black Goose Bistro
+</p>
+
+<p>
+The Restaurant
+The Black Goose Bistro offers casual lunch and dinner fare in a relaxed
+atmosphere. The menu changes regularly to highlight the freshest local
+ingredients.
+</p>
+
+<p>
+Catering
+You have fun. We'll handle the cooking. Black Goose Catering can handle
+events from snacks for a meetup to elegant corporate fundraisers.
+</p>
+
+<p>
+Location and Hours
+Seekonk, Massachusetts;
+Monday through Thursday 11am to 9pm; Friday and Saturday, 11am to
+midnight
+</p>
+</div>
+</body>
+
+   #+END_EXAMPLE
+
+* HTML Document Structure
+
+  1. Add DOCTYPE declaration
+     : <!DOCTYPE html>
+  2. Add root element around all content
+     : <html> ... </html>
+  3. Add head element with metadata
+     : <head>
+     : <meta charset="utf-8">
+  4. Add title element within head element
+     : <title>Black Goose Bistro</title>
+
+     *Note:* Under Org-mode, the =#+TITLE:= keyword sets the
+     ~<title>...</title>~, but if =#+OPTIONS: title:t= is set, then this phrase
+     will also be inserted into the document's body.  Set ~title:nil~ to just
+     set the title in the browser, but not the body.
+
+     A title is mandatory.  The title is what is displayed in a user's
+     Bookmarks or Favorites list and on tabs in desktop browsers.  Descriptive
+     titles are also a key tool for improving accesibility, as they are the
+     first things a person hears when using a screen reader.  In addition,
+     search engines rely heavily on document titles as well.
+
+     It is important to provide thoughtful and descriptive titles for all
+     documents and avoid vague titles such as "Welcome" or "My Page".  Also,
+     keep the length of the titles reasonableso they are able to display in the
+     browser's title area.
+  5. Define the body of the document
+     : <body> ... </body>
+
+* Identify Text Elements
+
+  The purpose of HTML is to add meaning and structure to the content.  It is
+  /not/ intended to describe how the content should /look/ (its presentation).
+
+** Semantic Markup
+
+   You must choose the HTML element that provides the most meaningful
+   description of the content at hand: called /semantic markup/.  For example,
+   the most important heading at the beginning of the document should be marked
+   up as an ~h1~ because it is the most important heading on the page.  *Don't
+   worry about what it looks like...this is changed with a /style sheet/.*  The
+   important thing is that you choose elements based on what makes the most
+   sense for the content.
+
+** Structure
+
+   In addition to adding meaning to content, the markup gives the document
+   /structure/.  The way elements follow each other or nest within one another
+   creates relationships between them.  This structure resembles an outline,
+   but its technical name is the /Document Object Model (DOM)/.  The underlying
+   document hierarchy gives browsers cues on how to handle the content.  It is
+   also the foundation upon which we add presentation instructions with style
+   sheets and behaviors with JavaScript.
+
+** Add Semantic Markup
+
+  Add the markup for headings and subheads (~h1~ and ~h2~), paragraphs (~p~),
+  and emphasized text (~em~) to the content.
+
+  1. Place ~h1~ around the main heading for the page.  Using Org-mode, this is
+     accomplished by setting the option ~title:t~.  Note, however, that by
+     default the title is placed inside a ~<header>~ element and is
+     centered[fn:title-center], so it goes a little beyond just being
+     descriptive.
+     : <header>
+     :   <h1 class="title">Title</h1>
+     : </header>
+  2. The page also has three subheads, which should be marked up as Heading
+     Level 2 (~h2~) elements:
+     : <h2>The Restaurant</h2>
+
+     In Org-mode, this is accomplished by marking the lines as Level 1
+     headings, and unsetting two options: ~num:nil~ and ~toc:nil~:
+     : * The Restaurant
+     : * Catering
+     : * Location and Hours
+
+     In Org-mode, the ~h2~ elements are wrapped in ~div~ containers, with both
+     specific ~id~s and ~class~es, and the ~h2~ elements are also given
+     specific ~id~s.  However, there is no default styling.
+  3. The paragraphs should be wrapped in paragraph elements (~p~).  Org-mode
+     has already done this by default, so there is nothing to do.
+  4. In the *Catering* section, emphasize that visitors should leave the
+     cooking to them.  To make text /emphasized/, mark it up in an emphasis
+     element (~em~) element.
+
+     *Note:* In Org-mode, enclosing a section of text using ~/~ ... ~/~ results
+     in the text being wrapped by the ~<i>~ tag, which is not best style in
+     HTML5.  To produce text wrapped between ~<em>~ tags, use:
+     : @@html:<em>@@ ... @@html:</em>@@
+
+[fn:title-center]=.title { text-align: center; margin-bottom: .2em }=
+
+
+#+OPTIONS: author:t broken-links:nil c:nil creator:nil
+#+OPTIONS: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
+#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+OPTIONS: timestamp:t title:t toc:t todo:t |:t
+
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 26.1 (Org mode 9.1.14)
+* HTML EXPORT SETUP                                                :noexport:
+#+OPTIONS: html-link-use-abs-url:nil html-postamble:auto
+#+OPTIONS: html-preamble:t html-scripts:t html-style:t
+#+OPTIONS: html5-fancy:t tex:t
+#+HTML_DOCTYPE: xhtml5
+#+HTML_CONTAINER: div
+#+DESCRIPTION: Example of a simple HTML web site using Org-mode
+#+KEYWORDS: simple org
+#+HTML_LINK_HOME:
+#+HTML_LINK_UP:
+#+HTML_MATHJAX:
+#+HTML_HEAD:
+#+HTML_HEAD_EXTRA:
+#+SUBTITLE: Using Org-Mode
+#+INFOJS_OPT:
+#+CREATOR: <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.1 (<a href="https://orgmode.org">Org</a> mode 9.1.14)
+#+LATEX_HEADER:

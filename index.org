@@ -1,0 +1,50 @@
+# -*- mode: org -*-
+
+#+TITLE: Black Goose Bistro
+
+* The Restaurant
+  The Black Goose Bistro offers casual lunch and dinner fare in a relaxed
+  atmosphere. The menu changes regularly to highlight the freshest local
+  ingredients.
+
+* Catering
+  You have fun. @@html:<em>@@We'll handle the
+  cooking@@html:</em>@@. Black Goose Catering can handle events from
+  snacks for a meetup to elegant corporate fundraisers.
+
+* Location and Hours
+  Seekonk, Massachusetts;
+  Monday through Thursday 11am to 9pm; Friday and Saturday, 11am to
+  midnight
+
+* DEFAULT EXPORT SETTINGS                                          :noexport:
+#+EXPORT_FILE_NAME: src/index.html
+#+OPTIONS: ':nil *:t -:t ::t <:t H:6 \n:nil ^:t arch:headline
+#+OPTIONS: author:t broken-links:nil c:nil creator:nil
+#+OPTIONS: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:nil
+#+OPTIONS: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+OPTIONS: timestamp:t title:t toc:nil todo:t |:t
+#+DATE: <2019-01-28 Mon>
+#+AUTHOR: Wesley Harvey
+#+EMAIL: pine@Pine.local
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 26.1 (Org mode 9.1.14)
+* HTML EXPORT SETTINGS                                             :noexport:
+#+OPTIONS: html-link-use-abs-url:nil html-postamble:auto
+#+OPTIONS: html-preamble:t html-scripts:t html-style:t
+#+OPTIONS: html5-fancy:t tex:t
+#+HTML_DOCTYPE: html5
+#+HTML_CONTAINER: div
+#+DESCRIPTION:
+#+KEYWORDS:
+#+HTML_LINK_HOME:
+#+HTML_LINK_UP:
+#+HTML_MATHJAX:
+#+HTML_HEAD:
+#+HTML_HEAD_EXTRA:
+#+SUBTITLE:
+#+INFOJS_OPT:
+#+CREATOR: <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.1 (<a href="https://orgmode.org">Org</a> mode 9.1.14)
+#+LATEX_HEADER:
